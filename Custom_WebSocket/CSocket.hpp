@@ -9,12 +9,12 @@
 #include <openssl/rand.h> 
 #include <iomanip>
 
-class MySocket{
+class CSocket{
 public:
 	// Constructor
-	MySocket();
+	CSocket();
 	// Destructor
-	~MySocket();
+	~CSocket();
 	
 	int switch_to_ws();
 	std::string generate_websocket_key();

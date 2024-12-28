@@ -1,8 +1,8 @@
-#include "MySocket.hpp"
-#include "MyParser.hpp"
+#include "CSocket.hpp"
+#include "CParser.hpp"
 
 // Constructor
-MySocket::MySocket() : m_ctx(nullptr), m_ssl(nullptr), m_sock(-1) {
+CSocket::CSocket() : m_ctx(nullptr), m_ssl(nullptr), m_sock(-1) {
     // Initialize OpenSSL
     SSL_library_init();
     OpenSSL_add_all_algorithms();
@@ -70,7 +70,7 @@ MySocket::MySocket() : m_ctx(nullptr), m_ssl(nullptr), m_sock(-1) {
 }
 
 // Destructor
-MySocket::~MySocket() {
+CSocket::~CSocket() {
     std::cout << "Closing socket and cleaning up resources.\n";
     if (m_ssl) SSL_free(m_ssl);
     if (m_sock >= 0) close(m_sock);
@@ -78,7 +78,7 @@ MySocket::~MySocket() {
 }
 
 // Generate a random WebSocket key
-std::string MySocket::generate_websocket_key() {
+std::string CSocket::generate_websocket_key() {
     unsigned char key[16];
     RAND_bytes(key, sizeof(key));
     std::ostringstream oss;
@@ -89,7 +89,7 @@ std::string MySocket::generate_websocket_key() {
 }
 
 // Send WebSocket upgrade request
-int MySocket::switch_to_ws() {
+int CSocket::switch_to_ws() {
     // Generate a random WebSocket key
     std::string websocket_key = generate_websocket_key();
 
@@ -128,7 +128,7 @@ int MySocket::switch_to_ws() {
 }
 
 // Send a WebSocket Request
-int MySocket::ws_request(const std::string& message) {
+int CSocket::ws_request(const std::string& message) {
 
 
 	if (SSL_write(m_ssl, message.c_str(), message.size()) <= 0) {

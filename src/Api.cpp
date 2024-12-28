@@ -14,7 +14,14 @@ Api::Api(){
 	m_socket = new BSocket();
 
 	// WebSocket++ Implementation
-//	m_socket = new Socketpp();
+	//m_socket = new Socketpp();
+	
+
+	// Custom Implementation
+	// m_socket = new CSocket();
+
+
+
 	// Switch to WebSockets
 	m_socket -> switch_to_ws();
 	// Authenticate

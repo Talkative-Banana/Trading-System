@@ -5,8 +5,8 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 
 # Targets and dependencies
-TARGET = algo.exe
-OBJECTS = main.o Trader.o Api.o Socket.o BSocket.o Socketpp.o
+TARGET = test_throughput.exe
+OBJECTS = test_throughput.o Api.o Socket.o BSocket.o Socketpp.o
 
 # Default target
 all: $(TARGET)
@@ -15,13 +15,9 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET) -lssl -lcrypto -lboost_system
 
-# Compile main.cpp to main.o
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
-
-# Compile Trader.cpp to Trader.o
-Trader.o: Trader.cpp
-	$(CXX) $(CXXFLAGS) -c Trader.cpp -o Trader.o
+# Compile test_latency.cpp to test_latency.o
+test_throughput.o: test_throughput.cpp
+	$(CXX) $(CXXFLAGS) -c test_throughput.cpp -o test_throughput.o
 
 # Compile Api.cpp to Api.o
 Api.o: Api.cpp
@@ -35,7 +31,7 @@ Socket.o: Socket.cpp
 BSocket.o: BSocket.cpp
 	$(CXX) $(CXXFLAGS) -c BSocket.cpp -o BSocket.o
 
-# BSocket Dependencies
+# Socketpp Dependencies
 Socketpp.o: Socketpp.cpp
 	$(CXX) $(CXXFLAGS) -c Socketpp.cpp -o Socketpp.o
 
@@ -45,4 +41,3 @@ clean:
 
 # Phony targets
 .PHONY: all clean
-
