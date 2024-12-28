@@ -11,10 +11,10 @@ Api::Api(){
 	// Create an instance of mysockets
 	
 	// Boost Socket Implementation
-	m_socket = new BSocket();
+	//m_socket = new BSocket();
 
 	// WebSocket++ Implementation
-	//m_socket = new Socketpp();	
+	m_socket = new Socketpp();	
 
 	// Custom Implementation
 	// m_socket = new CSocket();

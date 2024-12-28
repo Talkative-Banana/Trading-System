@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <openssl/rand.h> 
 #include <iomanip>
+#include "CParser.hpp"
+
 
 class CSocket{
 public:
@@ -25,4 +27,5 @@ private:
 	SSL_CTX* m_ctx;
 	SSL* m_ssl;
 	int m_sock;
+	CParser cparser;
 };

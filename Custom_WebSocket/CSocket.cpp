@@ -129,8 +129,6 @@ int CSocket::switch_to_ws() {
 
 // Send a WebSocket Request
 int CSocket::ws_request(const std::string& message) {
-
-
 	if (SSL_write(m_ssl, message.c_str(), message.size()) <= 0) {
         	std::cerr << "Failed to send request.\n";
         	return 1;

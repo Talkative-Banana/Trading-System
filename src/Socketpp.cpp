@@ -74,7 +74,7 @@ void Socketpp::switch_to_ws(){
 	websocketpp::lib::error_code ec;
 	
 	std::string protocol = "wss://";
-	std::string uri = protocol + "test.deribit.com/ws/api/v2";
+	std::string uri = protocol + host + "/ws/api/v2";
         client::connection_ptr con = m_endpoint.get_connection(uri, ec);
  
         if (ec) {
