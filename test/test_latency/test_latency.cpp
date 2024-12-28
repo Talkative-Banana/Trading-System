@@ -68,18 +68,24 @@ int main(){
 	clear_orders(api);
 	
 
-	int orders = 0;
-	// Start the clock
-    	auto start = std::chrono::high_resolution_clock::now();
-	while(orders < 51){ place_order(orders, api); }
-   	// Stop the clock
-    	auto end = std::chrono::high_resolution_clock::now();
-    	// Calculate duration
-    	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    	// Output result
-    	std::cout << "Execution time: " << duration.count() << " ms\n";
-	std::cout << "Throughput: " << 50.0 * 1000 / duration.count() << " orders/sec\n"; 
+	int orders = 0, _duration = 0;
+	while(orders < 51){ 
+		// Start the clock
+    		auto start = std::chrono::high_resolution_clock::now();
+		
+		place_order(orders, api); 
+   		
+		// Stop the clock
+    		auto end = std::chrono::high_resolution_clock::now();
 
-
+		// Calculate duration
+    		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    		// Output result
+    		std::cout << "Execution time: " << duration.count() << " ms\n";
+		
+		_duration += duration.count();
+	}
+	// Avg latency
+	std::cout << "Avg Latency: " << (1.0 * _duration) / 50.0 << "ms\n";
 	return 0;
 }
