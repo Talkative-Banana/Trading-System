@@ -10,9 +10,6 @@ public:
 	// Procedures
 	void Run();
 	// Return [status, resp] of the transaction
-	std::pair<int, std::string> get_orderbook();
-	std::pair<int, std::string> view_position();
-	std::pair<int, std::string> market_stream();
 	std::pair<int, std::string> place_order(const std::string&, double, int);
 	std::pair<int, std::string> cancel_order(const std::string&);
 	std::pair<int, std::string> modify_order(const std::string&, double, int);

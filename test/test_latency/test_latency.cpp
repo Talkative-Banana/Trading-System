@@ -93,7 +93,7 @@ int main(){
 		// Start the clock
     		auto start = std::chrono::high_resolution_clock::now();
 		
-		place_order_async(orders, api); 
+		place_order(orders, api); 
    		
 		// Stop the clock
     		auto end = std::chrono::high_resolution_clock::now();
