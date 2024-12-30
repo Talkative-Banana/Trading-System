@@ -17,7 +17,7 @@ int Trader::show_resp(const std::string& resp){
 int Trader::handlePlaceOrder(const std::function<std::pair<int, std::string>(std::string, double, int)>& action) {
 	try {
 		std::string ins; double price; int quantity;
-		std::cout << "Enter Instrument name: ";
+		std::cout << "Enter Instrument name:(eg BTC-PERPETUAL, ETH-PERPETUAL) ";
 		std::cin >> ins;
 		std::cout << "Enter Price: ";
 		std::cin >> price;
@@ -76,7 +76,7 @@ int Trader::handleModifyOrder(const std::function<std::pair<int, std::string> (s
 int Trader::handleViewPosition(const std::function<std::pair<int, std::string> (std::string)>& action){
 	try{
 		std::string inst;
-		std::cout << "Enter Instrument name: ";
+		std::cout << "Enter Instrument name:(eg ETH-PERPETUAL) ";
 		std::cin >> inst;
 		std::pair<int, std::string> result = action(inst);
 		int status = result.first;
@@ -93,7 +93,7 @@ int Trader::handleViewPosition(const std::function<std::pair<int, std::string> (
 int Trader::handleGetOrderBook(const std::function<std::pair<int, std::string> (std::string, int)>& action){
 	try{
 		std::string inst; int depth;
-		std::cout << "Enter Instrument name: ";
+		std::cout << "Enter Instrument name:(eg BTC-PERPETUAL) ";
 		std::cin >> inst;
 		std::cout << "Depth: ";
 		std::cin >> depth;
@@ -141,7 +141,7 @@ int Trader::handleMarketData(const std::function<std::pair<int, std::string>(std
 		
 		if(opt == 1){
 			std::string channel;
-			std::cout << "Enter channel to subscribe: (eg. announcements, platform_state, user.lock) ";
+			std::cout << "Enter channel to subscribe: (eg. announcements, platform_state, book.ETH-PERPETUAL.100ms) ";
 			std::cin >> channel;
 			std::pair<int, std::string> result = action(channel, 1);
 			int status = result.first;
