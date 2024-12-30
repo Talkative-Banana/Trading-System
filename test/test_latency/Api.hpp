@@ -13,6 +13,8 @@ public:
 	// Methods
 	[[nodiscard]] std::pair<int, std::string> api_public(const std::string& msg);
 	[[nodiscard]] std::pair<int, std::string> api_private(const std::string& msg);
+	void api_public_async(const std::string& msg);
+	void api_private_async(const std::string& msg);
 	[[nodiscard]] int Authenticate();
 private:
 	Socket* m_socket;

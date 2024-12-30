@@ -12,6 +12,7 @@
 #include "Socket.hpp"
 #include <condition_variable>
 
+
 typedef websocketpp::client<websocketpp::config::asio_tls_client> client;
 typedef std::shared_ptr<boost::asio::ssl::context> context_ptr;
 class connection_metadata {
@@ -64,6 +65,8 @@ public:
 	~Socketpp(); // Destructor
 	void switch_to_ws() override;
 	[[nodiscard]] std::pair<int, std::string> ws_request(const std::string& msg) override;
+	void ws_request_async(const std::string& msg, std::function<void(int, const std::string&)> callback) override;
+	void ws_response_async(int status, const std::string& resp) override;
 private:
 	client m_endpoint;
 	connection_metadata::ptr con_metadata;

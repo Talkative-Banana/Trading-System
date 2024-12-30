@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall -Wextra
+CXXFLAGS = -g -std=c++17 -Wall -Wextra
 
 # Targets and dependencies
 TARGET = test_latency.exe

@@ -11,10 +11,10 @@ Api::Api(){
 	// Create an instance of mysockets
 	
 	// Boost Socket Implementation
-	m_socket = new BSocket();
+	//m_socket = new BSocket();
 
 	// WebSocket++ Implementation
-	//m_socket = new Socketpp();	
+	m_socket = new Socketpp();	
 
 	// Custom Implementation
 	// m_socket = new CSocket();
@@ -33,14 +33,30 @@ Api::Api(){
 	}
 }
 
+// sync public req
 [[nodiscard]] std::pair<int, std::string> Api::api_public(const std::string& message){
 	auto resp = m_socket -> ws_request(message);
 	return resp;
 }
 
+// sync private req
 [[nodiscard]] std::pair<int, std::string> Api::api_private(const std::string& message){
 	auto resp = m_socket -> ws_request(message);
 	return resp;
+}
+
+// async public req
+void Api::api_public_async(const std::string& message){
+	return m_socket -> ws_request_async(message, [this](int status, const std::string& resp) {
+        	m_socket->ws_response_async(status, resp);
+    	});
+}
+
+// async private req
+void Api::api_private_async(const std::string& message){
+	return m_socket -> ws_request_async(message, [this](int status, const std::string& resp) {
+        	m_socket->ws_response_async(status, resp);
+    	});
 }
 
 [[nodiscard]] int Api::Authenticate(){

@@ -47,8 +47,9 @@ Socketpp::Socketpp(){
         std::cout << "Socketpp Intialized!\n";
 }
 
+// Sync req
 [[nodiscard]] std::pair<int, std::string> Socketpp::ws_request(const std::string& message){
-	 // Send the message
+	// Send the message
         websocketpp::lib::error_code ec;
     	auto metadata = con_metadata;
     
@@ -68,6 +69,22 @@ Socketpp::Socketpp(){
     	con_metadata->msg_queue.pop_back();
     	return std::make_pair(0, resp);
 }
+
+// Async req
+void Socketpp::ws_request_async(const std::string& msg, std::function<void(int, const std::string&)> /*callback*/) { 
+	// Send the message
+        websocketpp::lib::error_code ec;
+    	auto metadata = con_metadata;
+    
+    	m_endpoint.send(metadata -> m_hdl, msg, websocketpp::frame::opcode::text, ec);
+	return;
+}
+
+// Async resp
+void Socketpp::ws_response_async(int /*status*/, const std::string& resp) { 
+	std::cout << resp << '\n';
+	return;
+} 
 
 void Socketpp::switch_to_ws(){
 	 // Perform the websocket handshake
