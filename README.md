@@ -55,7 +55,11 @@ This system is designed to meet the demands of algorithmic trading by focusing o
 
 ### The method
 
-Two Implementaion of the sockets are currently supported. Boost beast implementaion and Websocket++ implementation. These implementations in turn can make both sync and async calls to remote api.
+Two Implementaion of the sockets are currently supported. Boost beast implementation and Websocket++ implementation. These implementations in turn can make both sync and async calls to remote api.
+
+Trader supporting various functionalities.
+![image](https://github.com/user-attachments/assets/18eca50e-753e-49dc-b584-435514815546)
+
 
 <!-- RESULTS -->
 ## Results
@@ -98,7 +102,24 @@ To get a local copy up and running follow these simple steps.
   ```bash
   git clone https://github.com/Talkative-Banana/Trading-System.git
   ```
-  Make sure you have both Boost Beast and Websocket++ libraries.
+  Make sure you have both Boost Beast and Websocket++ libraries then you can call make by going into directories having Makefile
+  ```bash
+  cd src/
+  make
+  ./algo.exe
+  ```
+  Make cahnges in the Api.cpp to switch implementations of socket and make changes in tes_latency.cpp to switch between sync or async
+  ```bash
+  cd test/test_latency/
+  make
+  ./test_latency.exe
+  ```
+  
+  ```bash
+  cd test/test_throughput/
+  make
+  ./test_throughput.exe
+  ```
 <!-- ROADMAP -->
 ## Roadmap
 - Clone the repo and open it in suitable IDE for complete project source code. You can also fix the issues and hence contribute.
